@@ -1,21 +1,14 @@
 fn main() {
     let mut test = String::from("hello");
-
-    println!("length of {} is {} ", test, calculate_string_size(&test));
     println!(" print this as slice: {}",&test[0..2]);
 
-    fn calculate_string_size (s:&String) -> usize {
-        s.len()
-    }
+    let names = vec!["ANTE", "MATE", "IKO", "NIKO", "KATA", "KARLA"];
+    println!("names before map() {:?}", names);
 
-    fn check_space_no (s: &String) -> usize {
-        let bytes = s.as_bytes();
+    let low_names: Vec<String> = names.iter()
+        .map(|word| word.replace("TE","BLEEE"))
+        .map(|word| word.to_lowercase())
+        .collect();
+    println!("name after map{:?}", low_names);
 
-        for (i, &item) in bytes.iter().enumerate(){
-            if item == b' ' {
-                return i;
-            }
-        }
-        s.len()
-    }
 }
